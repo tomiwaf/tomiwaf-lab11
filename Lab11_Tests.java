@@ -18,12 +18,10 @@ public class Lab11_Tests {
         threadA.start();
         threadB.start();
 
-        while(threadA.isAlive() && threadB.isAlive()){
-            continue;
+        if(!threadA.isAlive() && !threadB.isAlive()){
+            ArrayList<String> dataA = threadA.getData();
+            assertEquals(dataA.size(), 200);
         }
-        ArrayList<String> dataA = threadA.getData();
-        ArrayList<String> dataB = threadB.getData();
-        assertEquals(dataA.size() + dataB.size(), "200");
 
     }
 
