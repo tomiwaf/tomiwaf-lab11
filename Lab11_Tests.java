@@ -17,6 +17,12 @@ public class Lab11_Tests {
 
         threadA.start();
         threadB.start();
+        try {
+            threadA.join();
+            threadB.join();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
 
         if(!threadA.isAlive() && !threadB.isAlive()){
             ArrayList<String> dataA = threadA.getData();
@@ -64,6 +70,13 @@ public class Lab11_Tests {
         } catch (Exception e){
             e.printStackTrace();
         }
+
+        threadB.start();
+        try {
+            threadA.join();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
         int count = 0;
         ArrayList<String> dataA = threadA.getData();
         for (int i = 0; i < dataA.size(); i++) {
@@ -71,7 +84,6 @@ public class Lab11_Tests {
                 count++;
             }
         }
-        threadB.start();
         assertEquals(count, 10);
 
     }
