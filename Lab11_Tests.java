@@ -18,6 +18,13 @@ public class Lab11_Tests {
         threadA.start();
         threadB.start();
 
+        while(threadA.isAlive() && threadB.isAlive()){
+            continue;
+        }
+        ArrayList<String> dataA = threadA.getData();
+        ArrayList<String> dataB = threadB.getData();
+        assertEquals(dataA.get(99).substring(8) + dataB.get(99).substring(8), "100100");
+
     }
 
     /*
