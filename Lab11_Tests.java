@@ -23,7 +23,7 @@ public class Lab11_Tests {
         }
         ArrayList<String> dataA = threadA.getData();
         ArrayList<String> dataB = threadB.getData();
-        assertEquals(dataA.get(99).substring(8) + dataB.get(99).substring(8), "100100");
+        assertEquals(dataA.size() + dataB.size(), "200");
 
     }
 
@@ -43,6 +43,11 @@ public class Lab11_Tests {
         } catch (Exception e){
             e.printStackTrace();
         }
+        ArrayList<String> dataA = threadA.getData();
+        ArrayList<String> dataB = threadB.getData();
+        boolean check = dataA.size() >= 10 && dataB.size() >= 10;
+        assertEquals(check, true);
+
 
     }
 
