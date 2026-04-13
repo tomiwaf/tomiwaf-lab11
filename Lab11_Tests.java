@@ -44,8 +44,7 @@ public class Lab11_Tests {
             e.printStackTrace();
         }
         ArrayList<String> dataA = threadA.getData();
-        ArrayList<String> dataB = threadB.getData();
-        boolean check = dataA.size() >= 10 && dataB.size() >= 10;
+        boolean check = dataA.size() >= 10;
         assertEquals(check, true);
 
 
@@ -67,7 +66,15 @@ public class Lab11_Tests {
         } catch (Exception e){
             e.printStackTrace();
         }
-
+        int count = 0;
+        ArrayList<String> dataA = threadA.getData();
+        for (int i = 0; i < dataA.size(); i++) {
+            if (dataA.get(i).substring(0, 2).equals("A3")) {
+                count++;
+            }
+        }
         threadB.start();
+        assertEquals(count, 10);
+
     }
 }
